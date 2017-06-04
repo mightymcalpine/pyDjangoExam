@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% load staticfiles %}
+		<title>Login or Register</title>
+		<meta charset="utf-8">
+		<meta name="#" content="#">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		
+		<!-- jQuery compiled and minified v3.2.1 -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Londrina+Outline|Amatic+SC:700" rel="stylesheet">
+		<!-- Main styles -->
+		<link rel="stylesheet" href="{% static 'logReg/css/styles.css' %}">
+	</head>
+	<body>
+		<div class="container">
+			<section class="row">
+				<!-- Register -->
+				<div class="col-lg-4" id="reg-pad">
+					<h1>New Here? Register</h1>
+					<form action="{% url 'logReg:register' %}" method="post">
+					{% csrf_token %}
+					<section class="form-group">						
+						<label for="fname">First Name:</label>
+						<input type="text" name="firstName" id="fname" class="form-control inp-style">
+						<label for="lname">Last Name:</label>
+						<input type="text" name="lastName" id="lname" class="form-control inp-style">
+						<label for="email">Email:</label>
+						<input type="email" name="email" id="email" class="form-control inp-style">
+						<label for="pwHash">Password:</label>
+						<input type="password" name="pwHash" id="pwHash" class="form-control inp-style">
+						<label for="pwConfirm">Confirm Password:</label>
+						<input type="password" name="pwConfirm" id="pwConfirm" class="form-control inp-style">
+						<button type="submit" name="logReg" value="register" class="btn btn-sm btn-default btn-style">Register</button>
+					</section>
+					</form>
+				</div>
+				<!-- Login -->
+				<div class="col-lg-4">
+					<h1>Back Again? Login</h1>
+					<form action="{% url 'logReg:login' %}" method="post">
+					{% csrf_token %}
+					<section class="form-group">
+						<label for="email">Email:</label>
+						<input type="email" name="email" id="email" class="form-control inp-style">
+						<label for="pwHash">Password:</label>
+						<input type="password" name="pwHash" id="pwHash" class="form-control inp-style">
+						<button type="submit" name="logReg" value="login" class="btn btn-sm btn-default btn-style">Login</button>
+					</section>
+					</form>					
+					{% if messages %}
+						{% for message in messages %}
+							<p class="error">{{ message }}</p>
+						{% endfor %}
+					{% endif %}					
+				</div>
+			</section>
+		</div>
+	</body>
+</html>

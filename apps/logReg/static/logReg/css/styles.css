@@ -1,0 +1,22 @@
+h1 {
+	font-family: 'Londrina Outline', cursive;
+	font-size: 3em;
+	font-weight: 600;
+	margin: 30px 0;
+}
+#reg-pad {
+	margin-right: 50px;
+}
+.btn-style {
+	margin-top: 5px;
+}
+.inp-style {
+	margin-bottom: 13px;
+}
+label, button {
+	font-family: 'Amatic SC', cursive;
+	font-size: 1.65em;
+}
+.error {
+	color: #BF0207;
+}
