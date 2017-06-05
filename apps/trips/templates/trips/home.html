@@ -17,27 +17,78 @@
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<!-- Fonts -->
-		<link href="https://fonts.googleapis.com/css?family=Londrina+Outline|Amatic+SC:700" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css?family=Londrina+Outline|Amatic+SC:700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet"> 
 		<!-- Main styles -->
-		<link rel="stylesheet" href="{% static 'users/css/styles.css' %}">
+		<link rel="stylesheet" href="{% static 'logReg/css/styles.css' %}">
 	<body>
 		<div class="container">
-			<!-- home, logout type links -->
 			<section class="row">
 				<div class="col-lg-10">
-					
+					<h1>Hello {{ request.session.user.name }}</h1>
+					<a href="{% url 'logReg:logout' %}">Logout</a>
 				</div>
 			</section>
-			<!-- main content tables -->
 			<section class="row">
 				<div class="col-lg-10">
-					
+					<h3>Your Trip Schedules:</h3>
+					<table class="table">
+						<thead>
+							<th>Destination</th>
+							<th>Trip Start Date</th>
+							<th>Trip End Date</th>
+							<th>Plan</th>
+						</thead>						
+						<tbody>
+							{% for trip in yourTrips %}
+								<tr>
+									<td><a href="{% url 'trips:tripProfile' trip.id %}">{{ trip.destination }}</a></td>
+									<td>{{ trip.startDate }}</td>
+									<td>{{ trip.endDate }}</td>
+									<td>{{ trip.plan }}</td>
+								</tr>
+							{% endfor %}
+							{% for trip in joinedTrips %}
+								<tr>
+									<td><a href="{% url 'trips:tripProfile' trip.id %}">{{ trip.destination }}</a></td>
+									<td>{{ trip.startDate }}</td>
+									<td>{{ trip.endDate }}</td>
+									<td>{{ trip.plan }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+						
+					</table>
 				</div>
 			</section>
-			<!-- main content tables -->
 			<section class="row">
 				<div class="col-lg-10">
-					
+					<h3>Other Users Trip Plans:</h3>
+					<table class="table">
+						<thead>
+							<th>Name</th>
+							<th>Destination</th>							
+							<th>Trip Start Date</th>
+							<th>Trip End Date</th>
+							<th>Plan</th>
+						</thead>
+						<tbody>
+							{% for trip in allTrips %}
+								<tr>
+									<td>{{ trip.plannedBy.name}}</td>
+									<td><a href="{% url 'trips:tripProfile' trip.id %}">{{ trip.destination }}</a></td>
+									<td>{{ trip.startDate }}</td>
+									<td>{{ trip.endDate }}</td>
+									<td><a href="{% url 'trips:join' trip.id %}">Join</a></td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</section>
+			<section class="row">
+				<div class="col-lg-10">
+					<a href="{% url 'trips:newTrip' %}">Add a Trip</a>
 				</div>
 			</section>
 		</div>

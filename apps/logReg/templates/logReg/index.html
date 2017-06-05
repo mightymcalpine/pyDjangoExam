@@ -18,6 +18,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<!-- Fonts -->
 		<link href="https://fonts.googleapis.com/css?family=Londrina+Outline|Amatic+SC:700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet"> 
 		<!-- Main styles -->
 		<link rel="stylesheet" href="{% static 'logReg/css/styles.css' %}">
 	</head>
@@ -30,10 +31,10 @@
 					<form action="{% url 'logReg:register' %}" method="post">
 					{% csrf_token %}
 					<section class="form-group">						
-						<label for="fname">First Name:</label>
-						<input type="text" name="firstName" id="fname" class="form-control inp-style">
-						<label for="lname">Last Name:</label>
-						<input type="text" name="lastName" id="lname" class="form-control inp-style">
+						<label for="name">Name:</label>
+						<input type="text" name="name" id="name" class="form-control inp-style">
+						<label for="username">Username:</label>
+						<input type="text" name="username" id="username" class="form-control inp-style">
 						<label for="email">Email:</label>
 						<input type="email" name="email" id="email" class="form-control inp-style">
 						<label for="pwHash">Password:</label>
@@ -50,8 +51,8 @@
 					<form action="{% url 'logReg:login' %}" method="post">
 					{% csrf_token %}
 					<section class="form-group">
-						<label for="email">Email:</label>
-						<input type="email" name="email" id="email" class="form-control inp-style">
+						<label for="username">Username:</label>
+						<input type="username" name="username" id="username" class="form-control inp-style">
 						<label for="pwHash">Password:</label>
 						<input type="password" name="pwHash" id="pwHash" class="form-control inp-style">
 						<button type="submit" name="logReg" value="login" class="btn btn-sm btn-default btn-style">Login</button>

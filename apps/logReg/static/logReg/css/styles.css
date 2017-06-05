@@ -4,6 +4,10 @@ h1 {
 	font-weight: 600;
 	margin: 30px 0;
 }
+h2, h3 {
+	font-family: 'Londrina Outline', cursive;
+	font-weight: 600;
+}
 #reg-pad {
 	margin-right: 50px;
 }
@@ -16,6 +20,15 @@ h1 {
 label, button {
 	font-family: 'Amatic SC', cursive;
 	font-size: 1.65em;
+}
+th, td {
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	font-size: 1.25em;
+}
+p, li {
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	font-size: 1.45em;
+	padding: 10 0;
 }
 .error {
 	color: #BF0207;

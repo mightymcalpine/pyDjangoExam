@@ -20,8 +20,8 @@ def process(request):
 		else:
 			request.session['user'] = {
 				'id': response[1].id,
-				'firstName': response[1].firstName,
-				'lastName': response[1].lastName
+				'name': response[1].name,
+				'username': response[1].username
 			}
 			return redirect('trips:home')
 	return redirect('logReg:index')
@@ -29,5 +29,3 @@ def process(request):
 def logout(request):
 	request.session.clear()
 	return redirect('logReg:index') 
-		 
-		

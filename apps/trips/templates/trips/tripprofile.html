@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% load staticfiles %}
+		<title>Trip Profile</title>
+		<meta charset="utf-8">
+		<meta name="#" content="#">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		
+		<!-- jQuery compiled and minified v3.2.1 -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Londrina+Outline|Amatic+SC:700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
+		<!-- Main styles -->
+		<link rel="stylesheet" href="{% static 'logReg/css/styles.css' %}">
+	<body>
+		<div class="container">
+			<section class="row">
+				<div class="col-lg-10">
+					<a href="{% url 'trips:home' %}">Home</a>
+					<a href="{% url 'logReg:logout' %}">Logout</a>
+				</div>
+			</section>
+			<section class="row">
+				<div class="col-lg-10">
+					{% for trip in thisTrip %}
+						<h2>{{ trip.destination }}</h2>
+						<p>Planned By: {{ trip.plannedBy.name }}</p>
+						<p>Trip Plan: {{ trip.plan }}</p>
+						<p>Trips Start Date: {{ trip.startDate }}</p>
+						<p>Trip End Date: {{ trip.endDate }}</p>
+					{% endfor %}
+				</div>
+			</section>
+			<section class="row">
+				<div class="col-lg-10">
+				<h3>Other Users Joining the Trip:</h3>
+				<ul>
+					{% for user in joined %}
+					<li>{{ user.name }}</li>
+					{% endfor %}
+				</ul>
+				</div>
+			</section>
+		</div>
+	</body>
+</html>

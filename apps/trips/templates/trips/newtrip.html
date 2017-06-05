@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% load staticfiles %}
+		<title>Add New Trip</title>
+		<meta charset="utf-8">
+		<meta name="#" content="#">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		
+		<!-- jQuery compiled and minified v3.2.1 -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Londrina+Outline|Amatic+SC:700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet"> 
+		<!-- Main styles -->
+		<link rel="stylesheet" href="{% static 'logReg/css/styles.css' %}">
+	<body>
+		<div class="container">
+			<section class="row">
+				<div class="col-lg-10">
+					<a href="{% url 'trips:home' %}">Home</a>
+					<a href="{% url 'logReg:logout' %}">Logout</a>
+				</div>
+			</section>
+			<section class="row">
+				<div class="col-lg-6">
+					<h1>Add a Trip</h1>
+					<form action="{% url 'trips:addTrip' %}" method="post">
+					{% csrf_token %}
+					<section class="form-group">						
+						<label for="destination">Destination:</label>
+						<input type="text" name="destination" id="destination" class="form-control inp-style">						
+						<label for="description">Description:</label>
+						<textarea name="description" id="description" class="form-control inp-style" cols="4"></textarea>						
+						<label for="startDate">Start Trip Date:</label>
+						<input type="date" name="startDate" id="startDate" class="form-control inp-style">						
+						<label for="endDate">End Trip Date:</label>
+						<input type="date" name="endDate" id="endDate" class="form-control inp-style">						
+						<button type="submit" class="btn btn-sm btn-default btn-style">Submit Trip</button>
+					</section>
+					</form>
+				</div>				
+			</section>
+			<section class="row">
+				<div class="col-lg-6">
+					{% if messages %}
+					{% for message in messages %}
+						<p class="error">{{ message }}</p>
+					{% endfor %}	
+				{% endif %}
+				</div>
+			</section>
+		</div>
+	</body>
+</html>
